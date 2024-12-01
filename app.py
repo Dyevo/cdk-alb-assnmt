@@ -3,11 +3,15 @@ import os
 
 import aws_cdk as cdk
 
-from cdk_alb_assnmt.cdk_alb_assnmt_stack import CdkAlbAssnmtStack
+from cdk_alb_assnmt.network_stack import CdkAlbAssnmtStack
 
 
 app = cdk.App()
-CdkAlbAssnmtStack(app, "CdkAlbAssnmtStack",
+
+network_stack = CdkAlbAssnmtStack(app, "CdkAlbAssnmtNetworkStack")
+server_stack = CdkAlbAssnmtStack(app, "CdkAlbAssnmtServerStack", vpc=network_stack.vpc)
+
+CdkAlbAssnmtStack(app, "CdkAlbAssnmtStack"
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

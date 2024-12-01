@@ -1,7 +1,7 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
 
-from cdk_alb_assnmt.cdk_alb_assnmt_stack import CdkAlbAssnmtStack
+from cdk_alb_assnmt.network_stack import CdkAlbAssnmtStack
 
 # example tests. To run these tests, uncomment this file along with the example
 # resource in cdk_alb_assnmt/cdk_alb_assnmt_stack.py
