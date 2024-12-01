@@ -8,8 +8,8 @@ from cdk_alb_assnmt.network_stack import CdkAlbAssnmtStack
 
 app = cdk.App()
 
-network_stack = CdkAlbAssnmtStack(app, "CdkAlbAssnmtNetworkStack")
-server_stack = CdkAlbAssnmtStack(app, "CdkAlbAssnmtServerStack", vpc=network_stack.vpc)
+# network_stack = CdkAlbAssnmtStack(app, "CdkAlbAssnmtNetworkStack")
+# server_stack = CdkAlbAssnmtStack(app, "CdkAlbAssnmtServerStack")
 
 CdkAlbAssnmtStack(app, "CdkAlbAssnmtStack"
     # If you don't specify 'env', this stack will be environment-agnostic.

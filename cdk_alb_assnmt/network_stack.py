@@ -2,7 +2,6 @@ from aws_cdk import (
     # Duration,
     Stack,
     aws_ec2 as ec2,
-    aws_elasticloadbalancingv2 as elbv2,
     # aws_sqs as sqs,
 )
 from constructs import Construct
@@ -17,7 +16,7 @@ class CdkAlbAssnmtStack(Stack):
         #VPC
         self.vpc = ec2.Vpc(
             self, "EngineeringVpc",
-            cidr="10.0.0.0/18",
+            ip_addresses=ec2.IpAddresses.cidr("10.0.0.0/18"),
             max_azs=2,
             subnet_configuration=[
                 ec2.SubnetConfiguration(

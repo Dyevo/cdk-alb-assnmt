@@ -1,15 +1,19 @@
+import code
+from inspect import stack
 from aws_cdk import (
+    CfnOutput,
     Stack,
     aws_s3 as s3,
     aws_ec2 as ec2,
-    aws_iam as iam
+    aws_iam as iam,
+    aws_elasticloadbalancingv2 as elbv2
 )
 
 import aws_cdk
 from constructs import Construct
 
 class ServerStack(stack):
-    def __init__(self, scope: core.Construct, id: str, vpc: ec2.Vpc, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, vpc: ec2.Vpc, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         # Security Groups
@@ -71,7 +75,7 @@ class ServerStack(stack):
             ]
         )
 
-        core.CfnOutput(
+        CfnOutput(
             self, "LoadBalancerDNS",
             value=lb.load_balancer_dns_name
         )
